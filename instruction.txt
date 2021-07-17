@@ -1,0 +1,62 @@
+in termianl: python -m venv project_env
+--> you should see the project_env folder is auto created. And the terminal is in the (venv_test) venv enviroment
+in terminal: dir
+--> you can see 'project_env' directory is listed
+in termial: project_env\Scripts\activate.bat  ==> TO ACTIVATE THE ENV
+--> you can see (project_env) (venv_test) in front of the path address, which indicates that you are in the virtural env now.
+in termianl: where python ==> to see the path to the current command
+--> the first line lists the project_env path location, which is C:\Users\NancyPC\PycharmProjects\venv_test\project_env\Scrip
+ts\python.exe
+
+NOW, if you install any package for the project, you will only install package within this environment. To test
+in terminal: pip list
+--> currently, only pip and setuptools are listed, no other installation yet
+in terminal: pip install flask flask-sqlalchemy
+in terminal: pip list
+--> now, flask , flask-sqlalchemy and all related dependencies are listed in this project list
+
+If you ever want to export the project with specific env, in python we use requirements.txt file
+in terminal: pip freeze > requirements.txt
+--> the requirements.txt is created with all the rightful version control docs for this project
+
+to deactivat the env
+in terminal: deactivate
+--> now the terminal path is only (venv_test) left, not (project_env), but the env is still existed
+to delete the env
+in terminal: rmdir project_env
+--> it shows 'The directory is not empty'
+in terminal: rmdir project_env /s
+--> this will prompt "project_env, Are you sure(Y/N)?"
+in terminal: y
+--> the project_env and its subdirectory is deleted.
+
+to create a venv within a directory
+in terminal: mkdir my_project
+in terminal: python -m venv my_project\venv ==> to create a venv that is named 'venv' inside the my_project dir
+--> now the venv dir is created within the my_project foler
+to activate the venv inside the my_project
+in terminal: my_project\venv\Scripts\activate.bat
+--> the promp shows (venv) (venv_text) C:..... path now.
+to use the previous installed env requirements.txt file
+in terminal: pip install -r requirements.txt
+--> now pip list command will show all the required packages are installed for this new evnironment
+
+the 'nenv' is something that can be created and thrown away, so no files should be added into this folder
+the 'nevn' shouldn't get commit to source control, should be get ignored, instead
+the requirements.txt should be committed to source control so that others can build their own env when run the project
+
+to create a virtual env that can access system wide packages in the computer
+first to deactivate and delete any existing env
+then
+in terminal: python -m venv venv --system-site-packages
+
+to only show locally installed packages in the env
+in terminal: pip list --local
+--> shows only installed to this env
+in terminal: deactivate
+in terminal: pip list
+--> shows packages from system
+
+when venv activated,
+in terminal: pip freeze --local
+--> will show only localled installed packages version
